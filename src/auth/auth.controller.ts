@@ -1,21 +1,22 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Req, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/auth.dto';
 import { AuthRoute } from 'src/shared/constants';
+import { LocalAuthGuard } from './local-auth.guard';
 
 @Controller(AuthRoute.AUTH)
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post(AuthRoute.REGISTER)
-  registerUser (@Body() createUserDto: RegisterDto) {
-    return this.authService.create(createUserDto);
+  async registerUser (@Body() createUserDto: RegisterDto) {
+    return await this.authService.create(createUserDto);
   }
 
   @Post(AuthRoute.LOGIN)
-  login() {
-    return this.authService.login();
+  @UseGuards(LocalAuthGuard)
+  async login(@Req() req) {
+   return await this.authService.login(req.user);
   }
-
   
 }
