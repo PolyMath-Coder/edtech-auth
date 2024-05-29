@@ -2,7 +2,7 @@
 
  ## Useful Links.
 
-•⁠  ⁠[Postman Documentation](https://documenter.getpostman.com/view/27074715/2sA3QmDuXM)
+•⁠  ⁠[Postman Documentation](https://documenter.getpostman.com/view/27074715/2sA3QteBZz)
 
 
 

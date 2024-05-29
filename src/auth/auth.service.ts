@@ -48,9 +48,7 @@ export class AuthService {
       return null
     }
    const compare_password = await bcrypt.compare(password, user.password)
-   console.log(compare_password)
    if(!compare_password) {
-    console.log(compare_password)
     throw new UnauthorizedException(ErrorResponse(400, 'password inputted not correct', null, null))
    }
    return user
