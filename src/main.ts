@@ -9,6 +9,6 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe({transform: true}))
   app.setGlobalPrefix(GlobalRoute.PREFIX);
-  await app.listen(process.env.PORT);
+  await app.listen(3000);
 }
 bootstrap();
