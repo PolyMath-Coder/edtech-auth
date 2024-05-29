@@ -1,5 +1,6 @@
 import { Transform } from "class-transformer";
 import { IsEmail, IsNotEmpty, IsString,  IsUUID,  Matches, MinLength } from "class-validator";
+import { IsStrongPassword } from "../auth.validate";
 
 
 export class RegisterDto {
@@ -12,10 +13,13 @@ export class RegisterDto {
    
     @IsString()
     @MinLength(8, { message: 'Password must be at least 8 characters long' })
-    @Matches(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, {
-        message: 'Password must contain at least one letter, one number, and one special character',
-      })
+    @IsStrongPassword()
     password: string
+    // @Matches(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, {
+    //   message: 'Password must contain at least one letter, one number, and one special character',
+    // })
+
+   
 }
 
 export class LoginDto {
