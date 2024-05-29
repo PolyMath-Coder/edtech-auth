@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { config } from 'dotenv';
 
 config()
+const DB_PORT = Number(process.env.DATABASE_PORT)
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -14,8 +15,8 @@ config()
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost' ,
-      port: parseInt(process.env.DATABASE_PORT, 10),
+      host: 'localhost',
+      port: DB_PORT,
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
